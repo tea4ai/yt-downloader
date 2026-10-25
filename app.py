@@ -4,7 +4,7 @@ import questionary
 
 from audio import download_audio
 from video import download_video
-
+from common import DEFAULT_DIR
 
 def ask(question):
     """Run a questionary prompt; exit cleanly if the user presses Ctrl+C."""
@@ -44,9 +44,9 @@ def main():
         )
     ).strip().strip('"').strip("'")
 
-    output_dir = ask(questionary.text("Output folder:", default="yt_downloader/downloads")).strip()
+    output_dir = ask(questionary.text("Output folder:", default=DEFAULT_DIR)).strip()
 
-    download(url, output_dir or "downloads", playlist)
+    download(url, output_dir or DEFAULT_DIR, playlist)
 
 
 if __name__ == "__main__":
