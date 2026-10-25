@@ -73,8 +73,11 @@ def run_download(url, output_dir, playlist, extra_options, archive_name) -> bool
         }
         try:
             with YoutubeDL(options) as ydl:
-                ydl.download([url])
-            print("Success!")
+                retcode = ydl.download([url])
+            if retcode:
+                print("Finished, but some items failed (see messages above).")
+                return False
+            print("Done. Items already in the archive are skipped")
             return True
         except DownloadError as e:
             print(f"\nDownload failed: {e}")
