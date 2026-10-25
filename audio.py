@@ -1,7 +1,7 @@
-from common import run_download
+from common import DEFAULT_DIR, run_download
 
 
-def download_audio(url: str, output_dir: str = "yt_downloader/downloads", playlist: bool = False) -> bool:
+def download_audio(url: str, output_dir: str = DEFAULT_DIR, playlist: bool = False) -> bool:
     extra = {
         "format": "bestaudio/best",
         "postprocessors": [
