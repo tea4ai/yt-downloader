@@ -1,0 +1,7 @@
+.venv/
+venv/
+__pycache__/
+.idea/
+downloads/
+archive_*.txt
+*.part
