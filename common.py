@@ -68,7 +68,6 @@ def run_download(url, output_dir, playlist, extra_options, archive_name) -> bool
             "no_warnings": True,
             "progress_hooks": [progress],
             "ffmpeg_location": imageio_ffmpeg.get_ffmpeg_exe(),
-            #"extractor_args": {"generic": {"impersonate": ["chrome"]}}, # Cloudflare anti-bot protection
             **extra_options,
         }
         try:
