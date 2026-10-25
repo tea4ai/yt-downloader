@@ -6,3 +6,4 @@ downloads/
 archive_*.txt
 *.part
 *.ytdl
+.pytest_cache/
