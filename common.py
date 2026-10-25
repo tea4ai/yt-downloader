@@ -6,6 +6,7 @@ from tqdm import tqdm
 from yt_dlp import YoutubeDL
 from yt_dlp.utils import DownloadError
 
+DEFAULT_DIR = str(Path(__file__).resolve().parent / "downloads")
 
 class ProgressBar:
     """yt-dlp progress hook that draws one tqdm bar per downloaded stream."""
