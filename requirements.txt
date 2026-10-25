@@ -1,4 +1,4 @@
-yt-dlp
-imageio-ffmpeg
-tqdm
-questionary
+yt-dlp>=2026.8.19
+imageio-ffmpeg>=0.6.0
+tqdm>=4.70.1
+questionary>=2.1.1
