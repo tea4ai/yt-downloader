@@ -138,6 +138,12 @@ def test_run_download_merges_extra_options(monkeypatch, tmp_path):
 
     assert FakeYDL.last_options["format"] == "x"
 
+def test_run_download_disables_native_progress(monkeypatch, tmp_path):
+    monkeypatch.setattr(common, "YoutubeDL", FakeYDL)
+
+    common.run_download("https://example.com/v", str(tmp_path), False, {}, "a.txt")
+
+    assert FakeYDL.last_options["noprogress"] is True
 
 def test_run_download_returns_false_on_download_error(monkeypatch, tmp_path, capsys):
     monkeypatch.setattr(common, "YoutubeDL", FakeYDL)

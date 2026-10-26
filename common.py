@@ -67,6 +67,7 @@ def run_download(url, output_dir, playlist, extra_options, archive_name) -> bool
             "download_archive": str(Path(output_dir) / archive_name),
             "quiet": True,
             "no_warnings": True,
+            "noprogress": True,
             "progress_hooks": [progress],
             "ffmpeg_location": imageio_ffmpeg.get_ffmpeg_exe(),
             **extra_options,
