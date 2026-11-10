@@ -154,6 +154,14 @@ def test_run_download_returns_false_on_download_error(monkeypatch, tmp_path, cap
     assert ok is False
     assert "Download failed" in capsys.readouterr().out
 
+def test_single_mode_downloads_only_first_entry(monkeypatch, tmp_path):
+    monkeypatch.setattr(common, "YoutubeDL", FakeYDL)
+
+    common.run_download("https://example.com/v", str(tmp_path), False, {}, "a.txt")
+    assert FakeYDL.last_options["playlist_items"] == "1"
+
+    common.run_download("https://example.com/v", str(tmp_path), True, {}, "a.txt")
+    assert FakeYDL.last_options["playlist_items"] is None
 
 def test_run_download_returns_false_on_ctrl_c(monkeypatch, tmp_path):
     monkeypatch.setattr(common, "YoutubeDL", FakeYDL)

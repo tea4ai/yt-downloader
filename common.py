@@ -54,7 +54,7 @@ def run_download(url, output_dir, playlist, extra_options, archive_name) -> bool
     Path(output_dir).mkdir(parents=True, exist_ok=True)
 
     if playlist:
-        outtmpl = "%(playlist_title)s/%(playlist_index)03d - %(title)s.%(ext)s"
+        outtmpl = "%(playlist_title|Downloads)s/%(playlist_index)03d - %(title)s.%(ext)s"
     else:
         outtmpl = "%(title)s.%(ext)s"
 
@@ -63,6 +63,7 @@ def run_download(url, output_dir, playlist, extra_options, archive_name) -> bool
             "outtmpl": outtmpl,
             "paths": {"home": output_dir, "temp": tmp},
             "noplaylist": not playlist,
+            "playlist_items": None if playlist else "1",
             "ignoreerrors": playlist,
             "download_archive": str(Path(output_dir) / archive_name),
             "quiet": True,
